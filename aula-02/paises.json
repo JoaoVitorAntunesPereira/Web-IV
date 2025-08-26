@@ -1,0 +1,107 @@
+[
+    {"Afghanistan": {
+        "name": "Afghanistan",
+        "country_code": "93",
+        "iso_codes": "AF / AFG"
+    }},
+    {"Albania": {
+        "name": "Albania",
+        "country_code": "355",
+        "iso_codes": "AL / ALB"
+    }},
+    {"Algeria": {
+        "name": "Algeria",
+        "country_code": "213",
+        "iso_codes": "DZ / DZA"
+    }},
+    {"American Samoa": {
+        "name": "American Samoa",
+        "country_code": "1-684",
+        "iso_codes": "AS / ASM"
+    }},
+    {"Andorra": {
+        "name": "Andorra",
+        "country_code": "376",
+        "iso_codes": "AD / AND"
+    }},
+    {"Angola": {
+        "name": "Angola",
+        "country_code": "244",
+        "iso_codes": "AO / AGO"
+    }},
+    {"Anguilla": {
+        "name": "Anguilla",
+        "country_code": "1-264",
+        "iso_codes": "AI / AIA"
+    }},
+    {"Antarctica": {
+        "name": "Antarctica",
+        "country_code": "672",
+        "iso_codes": "AQ / ATA"
+    }},
+    {"Antigua and Barbuda": {
+        "name": "Antigua and Barbuda",
+        "country_code": "1-268",
+        "iso_codes": "AG / ATG"
+    }},
+    {"Argentina": {
+        "name": "Argentina",
+        "country_code": "54",
+        "iso_codes": "AR / ARG"
+    }},
+    {"Armenia": {
+        "name": "Armenia",
+        "country_code": "374",
+        "iso_codes": "AM / ARM"
+    }},
+    {"Aruba": {
+        "name": "Aruba",
+        "country_code": "297",
+        "iso_codes": "AW / ABW"
+    }},
+    {"Australia": {
+        "name": "Australia",
+        "country_code": "61",
+        "iso_codes": "AU / AUS"
+    }},
+    {"Austria": {
+        "name": "Austria",
+        "country_code": "43",
+        "iso_codes": "AT / AUT"
+    }},
+    {"Azerbaijan": {
+        "name": "Azerbaijan",
+        "country_code": "994",
+        "iso_codes": "AZ / AZE"
+    }},
+    {"Bahamas": {
+        "name": "Bahamas",
+        "country_code": "1-242",
+        "iso_codes": "BS / BHS"
+    }},
+    {"Bahrain": {
+        "name": "Bahrain",
+        "country_code": "973",
+        "iso_codes": "BH / BHR"
+    }},
+    {"Bangladesh": {
+        "name": "Bangladesh",
+        "country_code": "880",
+        "iso_codes": "BD / BGD"
+    }},
+    {"Barbados": {
+        "name": "Barbados",
+        "country_code": "1-246",
+        "iso_codes": "BB / BRB"
+    }},
+    {"Belarus": {
+        "name": "Belarus",
+        "country_code": "375",
+        "iso_codes": "BY / BLR"
+    }},
+    {"Belgium": {
+        "name": "Belgium",
+        "country_code": "32",
+        "iso_codes": "BE / BEL"
+    }}
+]

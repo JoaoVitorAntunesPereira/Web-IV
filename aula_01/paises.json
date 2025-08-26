@@ -1,0 +1,36 @@
+{
+  "nomes": {
+    "en": "Co-operative Republic of Guyana",
+    "ptbr": "República Cooperativa da Guiana"
+  },
+  "bandeira": "url/image/pais/bandeira",
+  "brasao": "url/image/pais/brasao",
+  "lema": "Um Povo, Uma Nação, Um Destino",
+  "capital": {
+    "nome": "Georgetown",
+    "coordenadas": "6°46´N 58°´W"
+  },
+  "linguas":["ingles"],
+  "governo": {
+    "tipo": "República presidencialista",
+    "presidente": "Irfaan Ali"
+  },
+  "area": {
+    "total": 214970,
+    "agua": 8.4
+  },
+  "fronteiras": ["Brasil", "Suriname", "Venezuela"],
+  "populacao": 786893,
+  "densidade": 3.5,
+  "pib": {
+    "total": 48514000000,
+    "percapita": 20.564
+  },
+  "idh": 0.742,
+  "moeda": ["Dólar guianense", "GYD"],
+  "fuso_horario": "UTC-4",
+  "iso": "GUY",
+  "internet": ".gy",
+  "telefone": "+692",
+  "website_governamental": "http://op.gov.gy/"
+}

@@ -1,0 +1,99 @@
+[
+    {
+        "titulo_original": "Silver Linings Playbook",
+        "traducoes": [
+            {
+                "titulo": "O Lado Bom da Vida",
+                "pais":{
+                    "id": 1,
+                    "nome": "Brasil"
+                }
+            }
+        ],
+        "ano_producao": 2012,
+        "diretor": "David O. Russell",
+        "estreias": [
+            {
+                "data_estreia": "08/09/2012",
+                "tipo": "Mundial",
+                "paises": []
+            }
+        ],
+        "duracao": 122,
+        "classificacao": 12,
+        "image_path": "/images/filme/Silver-Linings-Playbook1",
+        "generos": [
+            {
+                "id": 1,
+                "descricao": "Comédia"
+            },
+            {
+                "id": 2,
+                "descricao": "Drama"
+            },
+            {
+                "id": 3,
+                "descricao": "Romance"
+            }
+        ],
+        "paises_origem": [
+            {
+                "id": 2,
+                "nome": "Estados Unidos da América"
+            }
+        ],
+        "media": 3.7,
+        "avaliacoes": 61485,
+        "sinopse": "Um filme ai",
+        "elenco": [
+            {
+                "ator": {
+                    "id": 1,
+                    "nome": "Bradley Cooper",
+                    "image_path": "/images/actors/Bradley-Cooper-1"
+                },
+                "papel": "Pat Peoples"
+            },
+            {
+                "ator": {
+                    "id": 2,
+                    "nome": "Chris Tucker",
+                    "image_path": "/images/actors/Chris-Tucker-1"
+                },
+                "papel": "Danny"
+            },
+            {
+                "ator": {
+                    "id": 3,
+                    "nome": "Jacki Weaver",
+                    "image_path": "/images/actors/Jacki-Weaver-1"
+                },
+                "papel": "Dolores Solitano"
+            },
+            {
+                "ator": {
+                    "id": 4,
+                    "nome": "Jennifer Lawrence",
+                    "image_path": "/images/actors/Jennifer-Lawrence-1"
+                },
+                "papel": "Tiffany"
+            },
+            {
+                "ator": {
+                    "id": 5,
+                    "nome": "Julia Stiles",
+                    "image_path": "/images/actors/Julia-Stiles-1"
+                },
+                "papel": "Veronica"
+            },
+            {
+                "ator": {
+                    "id": 6,
+                    "nome": "Robert De Niro",
+                    "image_path": "/images/actors/Robert-De-Niro-1"
+                },
+                "papel": "Sr. Pat Solitano"
+            }
+        ]
+    }
+]
