@@ -107,10 +107,25 @@ def get_country_iso(pais: str):
 
 
 
-
 @app.get("/sortear/{quant}/{max}")
-def sortear():
-    pass
+def sortear(quant: int, max: int):
+    import random
+
+    nums = []
+    i = 0
+
+    if max < quant:
+        return "O número máximo deve ser maior ou igual a quantidade"
+
+    while i < quant:
+        num = random.randint(1, max)
+
+        if num not in nums:
+            nums.append(num)
+            i += 1
+
+    sorteados = {"numeros": nums}
+    return sorteados
 
 
 

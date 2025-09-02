@@ -3,6 +3,7 @@ modules = ["python-3.11"]
 
 [nix]
 channel = "stable-25_05"
+packages = ["cacert", "cargo", "glibcLocales", "libiconv", "libuv", "libxcrypt", "rustc"]
 
 [unitTest]
 language = "python3"
@@ -13,3 +14,17 @@ requiredFiles = [".replit", "replit.nix"]
 [deployment]
 run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
+
+[workflows]
+
+[[workflows.workflow]]
+name = "uvicorn"
+mode = "sequential"
+author = 37826236
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "uvicorn main:app --reload --port=8080"
+
+[agent]
+expertMode = true
