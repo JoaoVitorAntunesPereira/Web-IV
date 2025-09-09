@@ -46,3 +46,11 @@ def get_movies_for_person(name: str, page: int | None = None):
     data = movie_service.get_movies_for_person(name, page)
 
     return data
+
+@app.get("/person/popular/{time_window}/{page}")
+def get_popular_people_by_time(time_window: str, page: int):
+    movie_service = MovieService()
+    
+    data = movie_service.get_popular_people_by_time(time_window, page)
+    
+    return data

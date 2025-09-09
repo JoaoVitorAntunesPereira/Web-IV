@@ -8,13 +8,31 @@ class User(BaseModel):
    avatar: str | None = None
 
 class Movie(BaseModel):
-   id: int
-   original_title: str
-   genre_ids: list
-   overview: str
-   popularity: float
+   id: int | None = None
+   original_title: str | None = None
+   genre_ids: list | None = None
+   genres: list | None = None
+   overview: str | None = None
+   popularity: float | None = None
    poster_path: str | None = None
-   title: str
-   release_date: str
-   vote_average: float
-   vote_count: float
+   title: str | None = None
+   release_date: str | None = None
+   vote_average: float | None = None
+   vote_count: float | None = None
+   
+class Person(BaseModel):
+    adult: bool | None = None
+    biography: str | None = None
+    birthday: str | None = None
+    deathday: str | None = None
+    gender: int | None = None
+    homepage: str | None = None
+    id: int | None = None
+    imdb_id: str | None = None
+    known_for_department: str | None = None
+    name: str | None = None
+    place_of_birth: str | None = None
+    popularity: float | None = None
+    profile_path: str | None = None
+    known_for: list[Movie] | None = None
+   
