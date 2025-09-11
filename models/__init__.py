@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, computed_field
 
 class User(BaseModel):
    id: int
@@ -19,6 +19,13 @@ class Movie(BaseModel):
    release_date: str | None = None
    vote_average: float | None = None
    vote_count: float | None = None
+
+   @computed_field
+   @property
+   def poster_url(self) -> str:
+      return f"https://image.tmdb.org/t/p/w185{self.poster_path}"
+   
+   
    
 class Person(BaseModel):
     adult: bool | None = None

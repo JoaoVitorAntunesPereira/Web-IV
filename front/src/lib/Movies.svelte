@@ -2,7 +2,7 @@
 
     let results = $state(null);
     async function getMovies() {
-        let endpoint = `http://localhost:8000/movies/top`;
+        let endpoint = `http://localhost:8000/movies/top/1`;
         const res = await fetch(endpoint);
         const data = await res.json();
         if (res.ok) {
@@ -10,20 +10,17 @@
         } else {throw new Error(data); }
     }
 
-    function handleClick() {
     getMovies().then((data)=>{
-        results = data;
+            results = data;
     });
-    }
+
+    $effect(() => {
+        getMovies()
+    }) 
 
 </script>
 
 <h2>Componente</h2>
-
-<button
-    onclick={()=>handleClick()}
->top rated
-</button>
 
 <div class="results">
    {#if results}
