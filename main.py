@@ -68,3 +68,10 @@ def get_popular_people_by_time(time_window: str, page: int):
     data = movie_service.get_popular_people_by_time(time_window, page)
     
     return data
+
+@app.get("/movies/search")
+def get_movies_filter(release_year: int | None = None, popularity: str | None = None, genres: str | None = None):
+    movie_service = MovieService()
+    #Informar id do gênero, usar ',' para AND e '|' para OR
+    data = movie_service.get_movies_filter(release_year, popularity, genres)
+    return data

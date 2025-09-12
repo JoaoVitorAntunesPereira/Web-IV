@@ -114,6 +114,23 @@ class MovieService:
         people = [Person.model_validate(p) for p in results]
         return people
         
+    def get_movies_filter(self, release_year: str, popularity: str, genres: str):
+        url = "https://api.themoviedb.org/3/discover/movie"
+
+        params = {
+            "include_adult": "false",
+            "include_video": "false",
+            "language": "en-US",
+            "page": 1,
+            "primary_release_year": release_year,
+            "sort_by": f"popularity.{popularity}",
+            "with_genres": genres
+        }
+        
+        data = get_json(url, params)
+        
+        return data
+        
         
 
 
