@@ -24,22 +24,26 @@ class Movie(BaseModel):
    @property
    def poster_url(self) -> str:
       return f"https://image.tmdb.org/t/p/w185{self.poster_path}"
-   
-   
-   
+
+
+
 class Person(BaseModel):
-    adult: bool | None = None
-    biography: str | None = None
-    birthday: str | None = None
-    deathday: str | None = None
-    gender: int | None = None
-    homepage: str | None = None
-    id: int | None = None
-    imdb_id: str | None = None
-    known_for_department: str | None = None
-    name: str | None = None
-    place_of_birth: str | None = None
-    popularity: float | None = None
-    profile_path: str | None = None
-    known_for: list[Movie] | None = None
-   
+   adult: bool | None = None
+   biography: str | None = None
+   birthday: str | None = None
+   deathday: str | None = None
+   gender: int | None = None
+   homepage: str | None = None
+   id: int | None = None
+   imdb_id: str | None = None
+   known_for_department: str | None = None
+   name: str | None = None
+   place_of_birth: str | None = None
+   popularity: float | None = None
+   profile_path: str | None = None
+   known_for: list[Movie] | None = None
+
+   @computed_field
+   @property
+   def profile_pic_url(self) -> str:
+      return f"https://image.tmdb.org/t/p/w185{self.profile_path}"

@@ -100,20 +100,20 @@ class MovieService:
         people = [Person.model_validate(p) for p in results]
 
         return people
-    
-    def get_popular_people_by_time(time_window: str, page: int):
-        url = "https://api.themoviedb.org/3/trending/person/{time_window}"
-        
+
+    def get_popular_people_by_time(self,time_window: str, page: int):
+        url = f"https://api.themoviedb.org/3/trending/person/{time_window}"
+
         params = {
             "language": "en-US",
             "page": page
         }
-        
+
         data = get_json(url, params)
         results = data['results']
         people = [Person.model_validate(p) for p in results]
         return people
-        
+
     def get_movies_filter(self, release_year: str, popularity: str, genres: str):
         url = "https://api.themoviedb.org/3/discover/movie"
 
@@ -126,11 +126,11 @@ class MovieService:
             "sort_by": f"popularity.{popularity}",
             "with_genres": genres
         }
-        
+
         data = get_json(url, params)
-        
+
         return data
-        
-        
+
+
 
 

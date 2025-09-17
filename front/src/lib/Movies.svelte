@@ -1,6 +1,9 @@
 <script>
+    import { onMount } from "svelte";
+    import MovieCard from "$lib/MovieCard.svelte";
 
     let results = $state(null);
+
     async function getMovies() {
         let endpoint = `http://localhost:8000/movies/top/1`;
         const res = await fetch(endpoint);
@@ -14,19 +17,18 @@
             results = data;
     });
 
-    $effect(() => {
+    onMount(() => {
         getMovies()
     }) 
 
-</script>
+</script> 
 
 <h2>Componente</h2>
 
 <div class="results">
    {#if results}
        {#each results as item}
-       <p>{item.title}</p>
-       <img src={item.poster_url} alt="poster">
+            <MovieCard {item}/>
        {/each}
    {/if}
 </div>
