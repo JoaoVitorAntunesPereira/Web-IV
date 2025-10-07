@@ -97,9 +97,11 @@ class MovieService:
 
         data = get_json(url, params)
         results = data['results']
-        people = [Person.model_validate(p) for p in results]
+        person = Person.model_validate(results[0])
 
-        return people
+        movies = [Movie.model_validate(m) for m in person.known_for]
+
+        return movies
 
     def get_popular_people_by_time(self,time_window: str, page: int):
         url = f"https://api.themoviedb.org/3/trending/person/{time_window}"
