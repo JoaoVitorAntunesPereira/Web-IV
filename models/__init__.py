@@ -7,6 +7,10 @@ class User(BaseModel):
    #campo opcional
    avatar: str | None = None
 
+class Genre(BaseModel):
+   id: int | None = None
+   name: str | None = None
+   
 class Movie(BaseModel):
    id: int | None = None
    original_title: str | None = None
@@ -19,6 +23,7 @@ class Movie(BaseModel):
    release_date: str | None = None
    vote_average: float | None = None
    vote_count: float | None = None
+   genres_obj: list[Genre] | None = None
 
    @computed_field
    @property
@@ -47,3 +52,5 @@ class Person(BaseModel):
    @property
    def profile_pic_url(self) -> str:
       return f"https://image.tmdb.org/t/p/w185{self.profile_path}"
+   
+

@@ -1,61 +1,96 @@
 <script>
-    import { onMount } from "svelte";
-    import MovieCard from "./MovieCard.svelte";
+	import { onMount } from "svelte";
+	import MovieCard from "./MovieCard.svelte";
 
-    let results = $state(null)
-    let year = '2025'
-    let popularity = 'asc'
+	let results = null;
+	let year = "2025";
+	let popularity = "asc";
+	let genres = [];
+	let selectedGenre = ""; // novo campo
 
-    async function getDiscoverMovie() {
-        let endpoint = `http://localhost:8000/discover/movie?release_year=${year}&popularity=${popularity}`
+	async function getDiscoverMovie() {
+		let endpoint = `http://localhost:8000/discover/movie?release_year=${year}&popularity=${popularity}`;
 
-        console.log(endpoint)
-        
-        const res = await fetch(endpoint)
-        const data = await res.json()
-        results = data
+		if (selectedGenre) {
+			endpoint += `&genre=${selectedGenre}`;
+		}
 
-        if(res.ok){
-            return data
-        }else{
-            throw new Error(data)
-        }
-    }
+		console.log(endpoint);
 
-    getDiscoverMovie().then((data)=>{
-        console.log("resultados",results)
-    });
-    
+		const res = await fetch(endpoint);
+		const data = await res.json();
+		results = data;
 
-	async function handleSubmit(event) {
-		event.preventDefault()
-		await getDiscoverMovie()
+		if (res.ok) {
+			return data;
+		} else {
+			throw new Error(data);
+		}
 	}
 
+	async function handleSubmit(event) {
+		event.preventDefault();
+		await getDiscoverMovie();
+	}
 
+	async function getGenres() {
+		let endpoint = `http://localhost:8000/genres`;
+
+		const res = await fetch(endpoint);
+		const data = await res.json();
+
+		if (res.ok) {
+			genres = data;
+		} else {
+			console.error(data);
+		}
+	}
+
+	onMount(() => {
+		getGenres();
+		getDiscoverMovie();
+	});
 </script>
 
-<h2>Form</h2>
+<h2>Buscar filmes</h2>
 
-<p>{year}</p>
-<p>{popularity}</p>
+<form on:submit|preventDefault={handleSubmit}>
+	<label for="year">Ano de lançamento</label>
+	<input id="year" type="text" bind:value={year} />
 
-<form action="get" on:submit|preventDefault={handleSubmit}>
-    <label for="year">Release year</label>
-    <input id="year" type="text" bind:value={year}>
+	<fieldset>
+		<legend>Popularidade</legend>
 
-    <fieldset>
-        <legend>Popularity</legend>
+		<label>
+			<input
+				type="radio"
+				bind:group={popularity}
+				value="asc"
+				on:change={handleSubmit}
+			/>
+			Crescente
+		</label>
 
-        <input type="radio" bind:group={popularity} value="asc" checked name="popularity" on:change|preventDefault={handleSubmit}/>
-        <label for="popularity">Ascent</label>
+		<label>
+			<input
+				type="radio"
+				bind:group={popularity}
+				value="desc"
+				on:change={handleSubmit}
+			/>
+			Decrescente
+		</label>
+	</fieldset>
 
-        <input type="radio" bind:group={popularity} value="desc" name="popularity" on:change|preventDefault={handleSubmit}/>
-        <label for="popularity">Descent</label>
-    </fieldset>
+	<label for="genre">Gênero</label>
+	<select id="genre" bind:value={selectedGenre} on:change={handleSubmit}>
+		<option value="">Todos</option>
+		{#each genres as genre}
+			<option value={genre.id}>{genre.name}</option>
+		{/each}
+	</select>
 
-    <button type="submit">Buscar</button>
-
+	<button type="submit">Buscar</button>
 </form>
 
 {#if results}

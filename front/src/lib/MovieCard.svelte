@@ -10,6 +10,13 @@
         <p class="item-title">{item.title}</p>
         <p class="item-popularity">Popularidade: {item.popularity}</p>
         <p class="item-release-date">{item.release_date}</p>
+        {#if item.genres_obj}
+            <p>Gêneros: 
+            {#each item.genres_obj as genre}
+                {genre.name}, 
+            {/each}
+            </p>
+        {/if}
     </div>
 </div>
 

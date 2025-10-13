@@ -4,7 +4,7 @@ from dotenv import load_dotenv, find_dotenv
 import requests
 from rich import print
 
-from models import Movie, Person
+from models import Genre, Movie, Person
 
 load_dotenv(find_dotenv(".env"))
 TOKEN = os.environ["TMDB_TOKEN"]
@@ -29,6 +29,13 @@ class MovieService:
         data = get_json(url, params)
         results = data['results']
         movies = [Movie.model_validate(m) for m in results]
+        
+        movie_service = MovieService()
+        
+        for m in movies:
+            if m.genre_ids:
+                m.genres_obj = movie_service.set_genres(m.genre_ids)
+        
         return movies
 
     def get_movie(self, id: int) -> Movie:
@@ -150,9 +157,36 @@ class MovieService:
         data = get_json(url, params)
         results = data["results"]
         movies = [Movie.model_validate(m) for m in results]
+        
+        movie_service = MovieService()
+        
+        for m in movies:
+            if m.genre_ids:
+                m.genres_obj = movie_service.set_genres(m.genre_ids)
 
         return movies
         
+    @staticmethod
+    def get_genres():
+        url = "https://api.themoviedb.org/3/genre/movie/list?language=en"
+
+        data = get_json(url)
+        results = data["genres"]
+        genres = [Genre.model_validate(g) for g in results]
+
+        return genres
+    
+    def set_genres(self, genres_array: list):
+        genres = MovieService.get_genres()
+        genres_object = []
+        
+        for g in genres:
+            if g.id in genres_array:
+                genres_object.append(g)
+                
+        return genres_object
+        
+
 
 
 

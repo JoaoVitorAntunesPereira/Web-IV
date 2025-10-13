@@ -121,6 +121,14 @@ def discover_movies(release_year: int | None = None, popularity: str | None = No
     #Informar id do gênero, usar ',' para AND e '|' para OR
     data = movie_service.discover_movie(release_year, popularity, genres, title)
     return data
+
+@app.get("/genres")
+def get_genres():
+    movie_service = MovieService()
+
+    data = movie_service.get_genres()
+
+    return data
     
 
     

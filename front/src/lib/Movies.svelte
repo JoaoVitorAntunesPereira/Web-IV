@@ -15,7 +15,6 @@
 
     getMovies().then((data)=>{
         results = data;
-        results = data
         console.log("resultados",results)
     });
 
