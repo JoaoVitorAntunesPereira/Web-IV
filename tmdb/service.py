@@ -1,3 +1,4 @@
+import json
 import os
 from dotenv import load_dotenv, find_dotenv
 import requests
@@ -132,6 +133,26 @@ class MovieService:
         data = get_json(url, params)
 
         return data
+    
+    def discover_movie(self, release_year: str, popularity: str, genres: str, title: str | None = None):
+        url = "https://api.themoviedb.org/3/discover/movie"
+
+        params = {
+            "include_adult": "false",
+            "include_video": "false",
+            "language": "en-US",
+            "page": 1,
+            "primary_release_year": release_year,
+            "sort_by": f"popularity.{popularity}",
+            "with_genres": genres
+        }
+
+        data = get_json(url, params)
+        results = data["results"]
+        movies = [Movie.model_validate(m) for m in results]
+
+        return movies
+        
 
 
 

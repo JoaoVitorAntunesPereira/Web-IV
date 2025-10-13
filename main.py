@@ -6,6 +6,7 @@ from dotenv import load_dotenv, find_dotenv
 import motor
 from motor import motor_asyncio
 
+load_dotenv(find_dotenv(".env"))
 db_url = os.environ["MONGODB_URL"] 
 
 client = motor.motor_asyncio.AsyncIOMotorClient(db_url)
@@ -113,3 +114,13 @@ async def save_user(user: dict = Body(...)):
     user_added = await collection.find_one({"_id":created_user.inserted_id}, {"_id":0})
 
     return user_added
+
+@app.get("/discover/movie")
+def discover_movies(release_year: int | None = None, popularity: str | None = None, genres: str | None = None, title: str | None = None):
+    movie_service = MovieService()
+    #Informar id do gênero, usar ',' para AND e '|' para OR
+    data = movie_service.discover_movie(release_year, popularity, genres, title)
+    return data
+    
+
+    
