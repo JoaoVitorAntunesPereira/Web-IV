@@ -4,15 +4,18 @@
 
 	let results = null;
 	let year = "2025";
-	let popularity = "asc";
+	let popularity = "desc";
 	let genres = [];
-	let selectedGenre = ""; // novo campo
+	let selectedGenre = "";
+	let title = ""
+	let endpoint
 
 	async function getDiscoverMovie() {
-		let endpoint = `http://localhost:8000/discover/movie?release_year=${year}&popularity=${popularity}`;
 
-		if (selectedGenre) {
-			endpoint += `&genre=${selectedGenre}`;
+		if (title){
+			endpoint = `http://localhost:8000/movies/search?title=${title}&release_year=${year}`
+		}else{
+			endpoint = `http://localhost:8000/discover/movie?release_year=${year}&popularity=${popularity}&genres=${selectedGenre}`;
 		}
 
 		console.log(endpoint);
@@ -55,6 +58,9 @@
 <h2>Buscar filmes</h2>
 
 <form on:submit|preventDefault={handleSubmit}>
+	<label for="title">Título</label>
+	<input type="text" name="title" id="title" bind:value={title}>
+
 	<label for="year">Ano de lançamento</label>
 	<input id="year" type="text" bind:value={year} />
 

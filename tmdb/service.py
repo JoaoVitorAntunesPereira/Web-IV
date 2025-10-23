@@ -124,22 +124,20 @@ class MovieService:
         people = [Person.model_validate(p) for p in results]
         return people
 
-    def get_movies_filter(self, release_year: str, popularity: str, genres: str):
-        url = "https://api.themoviedb.org/3/discover/movie"
+    def get_movie_by_title(self, title: str, release_year: int):
+        url = "https://api.themoviedb.org/3/search/movie"
 
         params = {
             "include_adult": "false",
-            "include_video": "false",
             "language": "en-US",
             "page": 1,
             "primary_release_year": release_year,
-            "sort_by": f"popularity.{popularity}",
-            "with_genres": genres
+            "query": title
         }
-
+        print(params)
         data = get_json(url, params)
-
-        return data
+        results = data["results"]
+        return results
     
     def discover_movie(self, release_year: str, popularity: str, genres: str, title: str | None = None):
         url = "https://api.themoviedb.org/3/discover/movie"
@@ -180,9 +178,9 @@ class MovieService:
         genres = MovieService.get_genres()
         genres_object = []
         
-        for g in genres:
-            if g.id in genres_array:
-                genres_object.append(g)
+        genres_set = set(genres_array)
+
+        genres_object = [g for g in genres if g.id in genres_set]
                 
         return genres_object
         

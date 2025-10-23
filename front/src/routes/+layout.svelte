@@ -9,6 +9,7 @@ let {children} = $props();
 		<nav>
 			<a href={`/quotes`}>quotes</a>
 			<a href={`/movies`}>movies</a>
+      <a href={`/discover`}>discover</a>
 		</nav>
   </header>
 
