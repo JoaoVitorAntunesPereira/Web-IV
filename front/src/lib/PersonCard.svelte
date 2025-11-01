@@ -6,7 +6,7 @@
 
 
 <div class="actor-card">
-    <img class="actor-profile" src="{item.profile_pic_url}" alt="Robert Redford" />
+    <img class="actor-profile" src="{item.profile_pic_url}" alt={item.name} />
     <div class="actor-details">
         <p class="actor-name">{item.name}</p>
         <p class="actor-popularity">Popularidade: {item.popularity}</p>
