@@ -115,6 +115,26 @@ async def save_user(user: dict = Body(...)):
 
     return user_added
 
+@app.post("/person/save", status_code=status.HTTP_201_CREATED)
+async def save_person(person: dict = Body(...)):
+    collection = db.get_collection("artists")
+    
+    created_person = await collection.insert_one(person)
+    print("result %s" % repr(created_person.inserted_id)) 
+    person_added = await collection.find_one({"_id":created_person.inserted_id}, {"_id":0})
+
+    return person_added
+
+@app.get("/person/delete")
+async def delete_person(person_id: str):
+    collection = db.get_collection("artists")
+    print(person_id)
+    await collection.delete_one({"id": int(person_id)})
+    
+    return True
+
+    
+
 @app.get("/discover/movie")
 def discover_movies(release_year: int | None = None, popularity: str | None = None, genres: str | None = None, title: str | None = None):
     movie_service = MovieService()
