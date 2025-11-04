@@ -47,6 +47,7 @@ class Person(BaseModel):
    popularity: float | None = None
    profile_path: str | None = None
    known_for: list[Movie] | None = None
+   favorited: bool | None = False
 
    @computed_field
    @property

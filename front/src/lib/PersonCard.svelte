@@ -3,12 +3,13 @@
 
     let {item} = $props()
     let endpoint
-    let isFavorite = $state(false);
+    let isFavorite = $state(item.favorited);
     let results
+    console.log(isFavorite)
     
     async function toggleFavorite() {
         isFavorite = !isFavorite;
-
+        item.favorited = isFavorite
 
         if(isFavorite){
             console.log(`Item ${item.name} favorito: ${isFavorite}`);
@@ -74,6 +75,7 @@
     <div class="actor-details">
         <p class="actor-name">{item.name}</p>
         <p class="actor-popularity">Popularidade: {item.popularity}</p>
+        <p class="actor-favorited">Favorito: {item.favorited}</p>
         <p class="actor-department">Departamento: {item.known_for_department}</p>
     </div>
 </div>

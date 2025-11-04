@@ -46,6 +46,22 @@ def get_movie_by_id(id):
     movie = movie_service.get_movie(id)
     return movie
 
+@app.get("/person/delete")
+async def delete_person(person_id: int):
+    collection = db.get_collection("artists")
+    print(person_id)
+    await collection.delete_one({"id": person_id})
+    
+    return True
+
+@app.get("/person/favorites")
+async def favorited_person():
+    collection = db.get_collection("artists")
+
+    artists = await collection.find({}, {"_id": 0}).to_list(1000)
+
+    return artists
+
 @app.get("/person/{id}")
 def get_person_by_id(id: int):
     movie_service = MovieService()
@@ -124,15 +140,6 @@ async def save_person(person: dict = Body(...)):
     person_added = await collection.find_one({"_id":created_person.inserted_id}, {"_id":0})
 
     return person_added
-
-@app.get("/person/delete")
-async def delete_person(person_id: str):
-    collection = db.get_collection("artists")
-    print(person_id)
-    await collection.delete_one({"id": int(person_id)})
-    
-    return True
-
     
 
 @app.get("/discover/movie")
