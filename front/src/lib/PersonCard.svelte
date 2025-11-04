@@ -5,7 +5,6 @@
     let endpoint
     let isFavorite = $state(item.favorited);
     let results
-    console.log(isFavorite)
     
     async function toggleFavorite() {
         isFavorite = !isFavorite;

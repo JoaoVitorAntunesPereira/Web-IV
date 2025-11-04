@@ -135,11 +135,17 @@ async def save_user(user: dict = Body(...)):
 async def save_person(person: dict = Body(...)):
     collection = db.get_collection("artists")
     
-    created_person = await collection.insert_one(person)
-    print("result %s" % repr(created_person.inserted_id)) 
-    person_added = await collection.find_one({"_id":created_person.inserted_id}, {"_id":0})
+    favorited_person = await collection.find_one({"id": person["id"]}, {"_id":0})
+    
+    if favorited_person:
+        return favorited_person
+    else:
+        created_person = await collection.insert_one(person)
+        print("result %s" % repr(created_person.inserted_id)) 
+        person_added = await collection.find_one({"_id":created_person.inserted_id}, {"_id":0})
 
-    return person_added
+        return person_added
+
     
 
 @app.get("/discover/movie")
